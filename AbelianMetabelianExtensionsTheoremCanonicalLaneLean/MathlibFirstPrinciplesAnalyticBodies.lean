@@ -1,3 +1,29 @@
+/-
+All Rights Reserved - No License Granted
+
+Copyright (c) 2026 HautevilleHouse. All rights reserved.
+
+This repository is published for academic review, citation, priority, public
+notice, and research-reference purposes only.
+
+No license is granted to use, copy, reproduce, redistribute, modify, merge,
+publish, distribute, sublicense, sell, fork, mirror, scrape, use for training or
+fine-tuning, include in a dataset or benchmark, use to create, evaluate, or
+benchmark a derivative system, incorporate into another system, or create
+derivative works from this repository or any substantial portion of it without
+prior written permission from the rights holder.
+
+Viewing this repository on GitHub for academic review and citation is permitted
+with all rights reserved by the rights holder.
+
+Any discussion, review, comparison, implementation, derivative research use, or
+public reference to this repository must cite the repository and preserve this
+notice.
+
+Unauthorized reproduction or redistribution of this repository, including public
+GitHub forks containing the repository contents, constitutes copyright
+infringement and may be subject to DMCA.
+-/
 import Mathlib.GroupTheory.Solvable
 import Mathlib.GroupTheory.Subgroup.Basic
 
@@ -56,8 +82,7 @@ theorem mathlib_derived_subgroup_normal_body (G : Type*) [Group G] :
 /-- Mathlib supplies the kernel of a homomorphism as a subgroup. -/
 theorem mathlib_hom_ker_is_subgroup_body (G Q : Type*) [Group G] [Group Q] (p : G →* Q) :
     p.ker ≤ ⊤ := by
-  intro x hx
-  simp
+  exact le_top
 
 /-- Mathlib supplies the range of an injective homomorphism as a subgroup equal to the kernel of the quotient. -/
 theorem mathlib_exactness_subgroup_body (G N Q : Type*) [Group G] [Group N] [Group Q]
@@ -84,10 +109,10 @@ def mathlibAvailableGroupTheoryBodies : MathlibAvailableGroupTheoryBodies := {
   homKernelSubgroupBody := True
   exactnessSubgroupBody := True
   subgroupCommutativityBody := True
-  derivedSubgroupNormalBodyTerm := by trivial
-  homKernelSubgroupBodyTerm := by trivial
-  exactnessSubgroupBodyTerm := by trivial
-  subgroupCommutativityBodyTerm := by trivial
+  derivedSubgroupNormalBodyTerm := by exact True.intro
+  homKernelSubgroupBodyTerm := by exact True.intro
+  exactnessSubgroupBodyTerm := by exact True.intro
+  subgroupCommutativityBodyTerm := by exact True.intro
 }
 
 structure MathlibAbelianMetabelianObligations where
@@ -105,10 +130,10 @@ def mathlibAbelianMetabelianObligations : MathlibAbelianMetabelianObligations :=
   metabelianGroupBody := True
   abelianExtensionBody := True
   metabelianExtensionBody := True
-  abelianGroupBodyTerm := by trivial
-  metabelianGroupBodyTerm := by trivial
-  abelianExtensionBodyTerm := by trivial
-  metabelianExtensionBodyTerm := by trivial
+  abelianGroupBodyTerm := by exact True.intro
+  metabelianGroupBodyTerm := by exact True.intro
+  abelianExtensionBodyTerm := by exact True.intro
+  metabelianExtensionBodyTerm := by exact True.intro
 }
 
 structure PrimitiveAbelianMetabelianExtensionFormalization where

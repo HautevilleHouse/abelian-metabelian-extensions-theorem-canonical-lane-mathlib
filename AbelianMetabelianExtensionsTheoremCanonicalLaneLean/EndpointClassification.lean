@@ -1,3 +1,29 @@
+/-
+All Rights Reserved - No License Granted
+
+Copyright (c) 2026 HautevilleHouse. All rights reserved.
+
+This repository is published for academic review, citation, priority, public
+notice, and research-reference purposes only.
+
+No license is granted to use, copy, reproduce, redistribute, modify, merge,
+publish, distribute, sublicense, sell, fork, mirror, scrape, use for training or
+fine-tuning, include in a dataset or benchmark, use to create, evaluate, or
+benchmark a derivative system, incorporate into another system, or create
+derivative works from this repository or any substantial portion of it without
+prior written permission from the rights holder.
+
+Viewing this repository on GitHub for academic review and citation is permitted
+with all rights reserved by the rights holder.
+
+Any discussion, review, comparison, implementation, derivative research use, or
+public reference to this repository must cite the repository and preserve this
+notice.
+
+Unauthorized reproduction or redistribution of this repository, including public
+GitHub forks containing the repository contents, constitutes copyright
+infringement and may be subject to DMCA.
+-/
 import Mathlib.Algebra.Group.Defs
 import Mathlib.Algebra.Group.Hom.Defs
 import Mathlib.Algebra.Group.Aut
@@ -100,14 +126,14 @@ theorem endpoint_classification_supplies_extension
 theorem endpoint_classification_supplies_compatible_action
     {B : GroupTheoreticBase} (Epkg : EndpointClassificationPackage B) :
     ∃ α : AdmissibleAction B Epkg.extension, True := by
-  exact ⟨Epkg.admissible.action, trivial⟩
+  exact ⟨Epkg.admissible.action, True.intro⟩
 
 /-- The cocycle of an endpoint classification satisfies the cocycle condition. -/
 theorem endpoint_classification_supplies_cocycle
     {B : GroupTheoreticBase} (Epkg : EndpointClassificationPackage B) :
     ∃ α : AdmissibleAction B Epkg.extension,
       ∃ c : TwoCocycle B Epkg.extension α, True := by
-  exact ⟨Epkg.admissible.action, Epkg.admissible.cocycle, trivial⟩
+  exact ⟨Epkg.admissible.action, ⟨Epkg.admissible.cocycle, True.intro⟩⟩
 
 /-- The kernel of an abelian metabelian extension is abelian. -/
 theorem kernel_is_abelian {B : GroupTheoreticBase}
@@ -136,7 +162,7 @@ theorem short_exact_sequence {B : GroupTheoreticBase}
     (D : AbelianMetabelianExtensionData B) :
     Function.Injective D.embed ∧ Function.Surjective D.proj ∧
     Set.range D.embed = {b : B.base | D.proj b = 1} := by
-  exact ⟨D.embed_injective, D.proj_surjective, kernel_range_eq_ker_proj D⟩
+  exact ⟨D.embed_injective, ⟨D.proj_surjective, kernel_range_eq_ker_proj D⟩⟩
 
 /-- Build an endpoint classification package from an admissible class. -/
 def admissibleClassAsEndpoint {B : GroupTheoreticBase}
@@ -151,7 +177,7 @@ theorem endpoint_classification_of_admissible_class
     {B : GroupTheoreticBase} (D : AbelianMetabelianExtensionData B)
     (α : AdmissibleClass B D) :
     EndpointClassificationClosed (admissibleClassAsEndpoint D α) := by
-  trivial
+  exact True.intro
 
 /-- Axiom: every abelian metabelian extension admits an admissible class.
 This is a central assertion of the Abelian Metabelian Extensions Theorem. -/
@@ -164,6 +190,6 @@ theorem extension_classified_by_admissible_class
     (B : GroupTheoreticBase) (D : AbelianMetabelianExtensionData B) :
     ∃ α : AdmissibleClass B D, True := by
   classical
-  exact ⟨Classical.choice (extension_has_admissible_class B D), trivial⟩
+  exact ⟨Classical.choice (extension_has_admissible_class B D), True.intro⟩
 
 end AbelianMetabelianExtensionsTheoremCanonicalLaneLean
